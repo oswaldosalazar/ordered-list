@@ -16,24 +16,24 @@ function sortById(list) {
 
 var sortedById = sortById(inputList)
 
-arraysSortedById = [];
+// arraysSortedById = [];
 
-for(var i = 0; i < sortedById.length; i++) {
-  arraysSortedById[i] = [];
-  arraysSortedById[i].push(sortedById[i]);
-}
+// for(var i = 0; i < sortedById.length; i++) {
+//   arraysSortedById[i] = [];
+//   arraysSortedById[i].push(sortedById[i]);
+// }
 
-console.log(arraysSortedById)
+// console.log(arraysSortedById)
 
 reOrderedArray = []
 
-for(var i = 0; i < arraysSortedById.length; i++) {
-  reOrderedArray.push(arraysSortedById[i][0])
-  for(var j = 0;  j < arraysSortedById.length; j++) {
-    if(arraysSortedById[i][0].coord[0] == arraysSortedById[j][0].coord[0] &&
-    arraysSortedById[i][0].coord[1] == arraysSortedById[j][0].coord[1])
+for(var i = 0; i < sortedById.length; i++) {
+  reOrderedArray.push(sortedById[i])
+  for(var j = 0;  j < sortedById.length; j++) {
+    if(sortedById[i].coord[0] == sortedById[j].coord[0] &&
+    sortedById[i].coord[1] == sortedById[j].coord[1])
     {
-      reOrderedArray.push(arraysSortedById[j][0])
+      reOrderedArray.push(sortedById[j])
     }
   }
 }
