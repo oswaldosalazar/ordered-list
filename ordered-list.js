@@ -1,4 +1,4 @@
-var inputList = [
+var inputArray = [
   { id: 6, coord: [1, 2] },
   { id: 14, coord: [9, 21] },
   { id: 1, coord: [1, -6] },
@@ -10,74 +10,51 @@ var inputList = [
   { id: 3, coord: [2, 4] }
 ];
 
-function sortById(list) {
-  return list.sort((a, b) => a.id - b.id);
-};
+function orderArrayByIdAndGroupCoord(inputList) {
 
-var sortedById = sortById(inputList)
-
-reOrderedArray = []
-
-for(var i = 0; i < sortedById.length; i++) {
-  reOrderedArray.push(sortedById[i])
-  for(var j = 0;  j < sortedById.length; j++) {
-    if(sortedById[i].coord[0] == sortedById[j].coord[0] &&
-    sortedById[i].coord[1] == sortedById[j].coord[1])
-    {
-      reOrderedArray.push(sortedById[j])
+  function sortById(list) {
+    return list.sort((a, b) => a.id - b.id);
+  };
+  
+  var sortedById = sortById(inputList);
+  
+  reOrderedArray = []
+  
+  for(var i = 0; i < sortedById.length; i++) {
+  
+    reOrderedArray.push(sortedById[i]);
+  
+    for(var j = 0;  j < sortedById.length; j++) {
+      if(sortedById[i].coord[0] == sortedById[j].coord[0] &&
+      sortedById[i].coord[1] == sortedById[j].coord[1])
+      {
+        reOrderedArray.push(sortedById[j]);
+      }
     }
   }
+  
+  filteredArray = [...new Set(reOrderedArray)];
+  
+  // console.log(filteredArray);
+  
+  Array.prototype.groupBy = function(prop) {
+    return this.reduce(function(groups, item) {
+      var val = item[prop];
+      groups[val] = groups[val] || [];
+      groups[val].push(item);
+      return groups;
+    }, {});
+  }
+  
+  var groupedByCoord = filteredArray.groupBy('coord');
+  
+  outputArray = Object.values(groupedByCoord);
+  
+  outputArray.forEach(element => {
+    console.log(element)
+  });
 }
 
-filteredArray = [...new Set(reOrderedArray)];
-
-console.log(filteredArray)
-
-Array.prototype.groupBy = function(prop) {
-  return this.reduce(function(groups, item) {
-    const val = item[prop]
-    groups[val] = groups[val] || []
-    groups[val].push(item)
-    return groups
-  }, {})
-}
-
-const groupedByCoord = filteredArray.groupBy('coord')
-
-console.log(groupedByCoord)
-
-// outputArray = []
-
-// for(var i = 0; i < filteredArray.length - 2; i++) {
-//   outputArray[i] = [filteredArray[i]];
-
-//   if(filteredArray[i].coord.toString() == filteredArray[i+1].coord.toString()) {
-//     outputArray[i].push(filteredArray[i+1])
-//   } 
-// }
-
-// console.log(outputArray)
-
-
-// function groupBy(list, keyGetter) {
-//   const map = new Map();
-//   list.forEach((item) => {
-//        const key = keyGetter(item);
-//        const collection = map.get(key);
-//        if (!collection) {
-//            map.set(key, [item]);
-//        } else {
-//            collection.push(item);
-//        }
-//   });
-//   return map;
-// }
-
-// const grouped = groupBy(filteredArray, elem => elem.coord);
-
-// console.log(grouped.values());
-
-
-
+orderArrayByIdAndGroupCoord(inputArray);
 
 
