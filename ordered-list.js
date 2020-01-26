@@ -35,8 +35,6 @@ function orderArrayByIdAndGroupCoord(inputList) {
   
   filteredArray = [...new Set(reOrderedArray)];
   
-  // console.log(filteredArray);
-  
   Array.prototype.groupBy = function(prop) {
     return this.reduce(function(groups, item) {
       var val = item[prop];
@@ -50,11 +48,16 @@ function orderArrayByIdAndGroupCoord(inputList) {
   
   outputArray = Object.values(groupedByCoord);
   
-  outputArray.forEach(element => {
-    console.log(element)
-  });
+  
+	var str = '<ul>'
+
+  outputArray.forEach(function(element) {
+    str += '<li>'+ JSON.stringify(element) + '</li>';
+  }); 
+
+  str += '</ul>';
+  document.getElementById("container").innerHTML = str;
+
 }
 
 orderArrayByIdAndGroupCoord(inputArray);
-
-
