@@ -61,13 +61,14 @@
     outputArray = Object.values(groupedByCoord);
     
     
-        var str = '<ul>'
+    var str = '<div>';
 
     outputArray.forEach(function(element) {
-        str += '<li>'+ JSON.stringify(element) + '</li>';
+        str += '<p>'+ JSON.stringify(element) + '</p>';
     }); 
 
-    str += '</ul>';
+    str += '</div>';
+    
     document.getElementById("container").innerHTML = str;
 
     }
