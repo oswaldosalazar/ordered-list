@@ -16,15 +16,6 @@ function sortById(list) {
 
 var sortedById = sortById(inputList)
 
-// arraysSortedById = [];
-
-// for(var i = 0; i < sortedById.length; i++) {
-//   arraysSortedById[i] = [];
-//   arraysSortedById[i].push(sortedById[i]);
-// }
-
-// console.log(arraysSortedById)
-
 reOrderedArray = []
 
 for(var i = 0; i < sortedById.length; i++) {
@@ -42,6 +33,30 @@ filteredArray = [...new Set(reOrderedArray)];
 
 console.log(filteredArray)
 
+Array.prototype.groupBy = function(prop) {
+  return this.reduce(function(groups, item) {
+    const val = item[prop]
+    groups[val] = groups[val] || []
+    groups[val].push(item)
+    return groups
+  }, {})
+}
+
+const groupedByCoord = filteredArray.groupBy('coord')
+
+console.log(groupedByCoord)
+
+// outputArray = []
+
+// for(var i = 0; i < filteredArray.length - 2; i++) {
+//   outputArray[i] = [filteredArray[i]];
+
+//   if(filteredArray[i].coord.toString() == filteredArray[i+1].coord.toString()) {
+//     outputArray[i].push(filteredArray[i+1])
+//   } 
+// }
+
+// console.log(outputArray)
 
 
 // function groupBy(list, keyGetter) {
