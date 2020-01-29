@@ -33,21 +33,19 @@ function orderArrayByIdAndGroupCoord(inputList) {
   
   let str = '<div>';
 
-    outputArray.forEach( elem => {
-      str += '<p>';
+  outputArray.forEach( elem => {
+    str += '<p>';
 
-      elem.forEach( part => {
-        str += `ID: ` + part.id + ` COORD: (` + part.coord + `) `;
-      });
+    elem.forEach( part => {
+      str += `ID: ` + part.id + ` COORD: (` + part.coord + `) `;
+    });
 
-      str += '</p>';
-
-      }); 
+    str += '</p>';
+  }); 
 
   str += '</div>';
   
   document.getElementById("container").innerHTML = str;
-
 }
 
 orderArrayByIdAndGroupCoord(inputArray);
