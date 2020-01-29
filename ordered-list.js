@@ -16,48 +16,32 @@ function orderArrayByIdAndGroupCoord(inputList) {
     return list.sort((a, b) => a.id - b.id);
   };
   
-  var sortedById = sortById(inputList);
-  
-  reOrderedArray = []
-  
-  for(var i = 0; i < sortedById.length; i++) {
-  
-    reOrderedArray.push(sortedById[i]);
-  
-    for(var j = 0;  j < sortedById.length; j++) {
-      if(sortedById[i].coord[0] == sortedById[j].coord[0] &&
-      sortedById[i].coord[1] == sortedById[j].coord[1])
-      {
-        reOrderedArray.push(sortedById[j]);
-      }
-    }
-  }
-  
-  filteredArray = [...new Set(reOrderedArray)];
+  let sortedById = sortById(inputList);
   
   Array.prototype.groupBy = function(prop) {
     return this.reduce(function(groups, item) {
-      var val = item[prop];
+      let val = item[prop];
       groups[val] = groups[val] || [];
       groups[val].push(item);
       return groups;
     }, {});
   }
   
-  var groupedByCoord = filteredArray.groupBy('coord');
+  let groupedByCoord = sortedById.groupBy('coord');
   
   outputArray = Object.values(groupedByCoord);
-  
-  
-	var str = '<div>';
 
-  outputArray.forEach(function(element) {
-    str += '<p>'+ JSON.stringify(element) + '</p>';
-  }); 
-
-  str += '</div>';
+  console.log(outputArray)
   
-  document.getElementById("container").innerHTML = str;
+	// let str = '<div>';
+
+  // outputArray.forEach(function(element) {
+  //   str += '<p>'+ JSON.stringify(element) + '</p>';
+  // }); 
+
+  // str += '</div>';
+  
+  // document.getElementById("container").innerHTML = str;
 
 }
 
