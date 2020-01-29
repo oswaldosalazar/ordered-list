@@ -30,8 +30,6 @@ function orderArrayByIdAndGroupCoord(inputList) {
   let groupedByCoord = sortedById.groupBy('coord');
   
   outputArray = Object.values(groupedByCoord);
-
-  console.log(outputArray);
   
 	let str = '<div>';
 
