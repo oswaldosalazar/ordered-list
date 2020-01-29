@@ -6,7 +6,7 @@ var inputArray = [
   { id: 0, coord: [2, 4] },
   { id: 10, coord: [2, 9] },
   { id: 2, coord: [1, 2] },
-  { id: 5, coord: [2, 3] },
+  { id: 5, coord: [2, 3.14] },
   { id: 3, coord: [2, 4] }
 ];
 
@@ -31,11 +31,18 @@ function orderArrayByIdAndGroupCoord(inputList) {
   
   outputArray = Object.values(groupedByCoord);
   
-	let str = '<div>';
+  let str = '<div>';
 
-  outputArray.forEach(function(element) {
-    str += '<p>'+ JSON.stringify(element) + '</p>';
-  }); 
+    outputArray.forEach( elem => {
+      str += '<p>';
+
+      elem.forEach( part => {
+        str += `ID: ` + part.id + ` COORD: (` + part.coord + `) `;
+      });
+
+      str += '</p>';
+
+      }); 
 
   str += '</div>';
   
