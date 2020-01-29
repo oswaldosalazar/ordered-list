@@ -33,15 +33,15 @@ function orderArrayByIdAndGroupCoord(inputList) {
 
   console.log(outputArray);
   
-	// let str = '<div>';
+	let str = '<div>';
 
-  // outputArray.forEach(function(element) {
-  //   str += '<p>'+ JSON.stringify(element) + '</p>';
-  // }); 
+  outputArray.forEach(function(element) {
+    str += '<p>'+ JSON.stringify(element) + '</p>';
+  }); 
 
-  // str += '</div>';
+  str += '</div>';
   
-  // document.getElementById("container").innerHTML = str;
+  document.getElementById("container").innerHTML = str;
 
 }
 
